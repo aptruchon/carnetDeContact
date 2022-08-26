@@ -39,20 +39,17 @@ class UtilisateurControleur extends Controleur
 
         $erreur = false;
         if(!$utilisateur || !password_verify($mdp, $utilisateur->uti_mdp)) {
-            $erreur = "Combinaison courriel/mot de passe erronée";
+            $erreur = "**Combinaison courriel/Mot de passe erronée**";
         }
         else if($utilisateur->uti_confirmation != '') {
-            $erreur = "Compte non confirmé : vérifiez vos courriels";
-        }
-        else if(!$utilisateur->uti_actif) {
-            $erreur = "Compte pas activé : communiquez avec votre administrateur";
+            $erreur = "**Compte non confirmé. Vérifiez vos courriels**";
         }
 
         if(!$erreur) {
             // Sauvegarder l'état de connexion
             $_SESSION['utilisateur'] = $utilisateur;
-            // Rediriger vers categorie/tout
-            Utilitaire::nouvelleRoute('categorie/tout');
+            // Rediriger vers contact/tout
+            Utilitaire::nouvelleRoute('contact/tout');
         }
         else {
             $this->gabarit->affecter('erreur', $erreur);

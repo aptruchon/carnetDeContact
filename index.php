@@ -35,6 +35,9 @@ class Routeur
       else if(file_exists("gabarits/$nomFichier")) {
         include("gabarits/$nomFichier");
       }
+      else if(file_exists("lib/$nomFichier")) {
+        include("lib/$nomFichier");
+      }
     });
   }
   

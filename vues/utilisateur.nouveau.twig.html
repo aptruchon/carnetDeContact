@@ -5,19 +5,19 @@
         <form class="formulaire__champs" action="utilisateur/ajout" method="POST">
             <div class="unChamp">
 
-                <input class="champs__connexion" type="text" name="nom" id="nom" placeholder="Nom complet">
+                <input class="champs__connexion" type="text" name="uti_nom" id="uti_nom" placeholder="Nom complet" required>
             </div>
             <div class="unChamp">
 
-                <input class="champs__connexion" type="text" name="courriel" id="courriel" placeholder="Adresse email">
+                <input class="champs__connexion" type="text" name="uti_courriel" id="uti_courriel" placeholder="Adresse email" required>
             </div>
             <div class="unChamp">
 
-                <input class="champs__connexion" type="text" name="mdp" id="mdp" placeholder="Mot de passe">
+                <input class="champs__connexion" type="password" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe" required>
             </div>
             <div class="unChamp">
 
-                <input class="champs__connexion" type="text" name="cmdp" id="cmdp" placeholder="Confirmation du mot de passe">
+                <input class="champs__connexion" type="password" name="uti_mdp2" id="uti_mdp2" placeholder="Confirmation du mot de passe" required>
             </div>
 
             <button type="submit" class="bouton__formulaire-connexion">S'inscrire</button>
