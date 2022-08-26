@@ -1,0 +1,22 @@
+{% extends "base.twig.html" %}
+{% block main %}
+    <div class="fenetre__connexion">
+        <h2>Connexion</h2>
+        <form class="formulaire__champs" action="utilisateur/connexion" method="POST">
+            <div class="unChamp">
+                <!-- <label for="courriel">Adresse email</label> -->
+                <input class="champs__connexion" type="text" name="courriel" id="courriel" placeholder="Adresse email">
+            </div>
+            <div class="unChamp">
+                <!-- <label for="mdp">Mot de passe</label> -->
+                <input class="champs__connexion" type="text" name="mdp" id="mdp" placeholder="Mot de passe">
+            </div>
+            
+            <button type="submit" class="bouton__formulaire-connexion">Se connecter</button>
+        </form>
+        <div class="options__connexion">
+            <a href="utilisateur/nouveau">S'inscrire</a>
+            <a href="#">Mot de passe oublié?</a>
+        </div>
+    </div>
+{% endblock %}

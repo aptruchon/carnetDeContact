@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base href="{{ constant('BASE_SERVEUR') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="ressources/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+    <title>Nestor</title>
+</head>
+<body>
+    <header>
+        <div class="entete">
+            <h1>Nestor</h1>
+            {% if session.utilisateur %}
+            <!-- <div class="profile">
+                <span class="courriel-connexion">{{session.utilisateur.uti_courriel}}</span>
+                (<a href="utilisateur/deconnexion">déconnexion</a>)
+            </div> -->
+            {% endif %}
+        </div>
+    </header>
+
+    {% block main %}{% endblock %}
+</body>
+</html>

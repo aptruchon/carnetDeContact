@@ -1,0 +1,75 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-image: url("../img/hands.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1 {
+    font-size: 40px;
+   /*  background-color: rgba(231, 224, 141, 0.502); */
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.entete {
+    text-align: center;
+}
+
+.fenetre__connexion {
+    background-color: rgb(188, 196, 206, 0.72);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
+    border-radius: 5px;
+    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); */
+}
+
+.formulaire__champs {
+    text-align: center;
+}
+
+.champs__connexion {
+    width: 30vw;
+    height: 30px;
+    padding: 0;
+    border-radius: 0;
+    border-style: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    padding-left: 5px;
+}
+
+.bouton__formulaire-connexion {
+    width: 30vw;
+    height: 30px;
+    border-radius: 0;
+    border-style: none;
+    background-color: rgb(204, 187, 119);
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.bouton__formulaire-connexion:hover {
+    background-color: rgb(48, 114, 172);
+    color: white;
+    transition: .1s;
+}
+
+.options__connexion {
+    margin-top: 20px;
+    text-align: center;
+}
+
