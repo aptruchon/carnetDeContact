@@ -34,13 +34,16 @@ class ContactModele extends AccesBd
                                 tel_type = :tel_type,
                                 tel_poste = :tel_poste
                             WHERE 
-                                ctc_id = :ctc_id",
+                                ctc_id = :ctc_id
+                            AND 
+                                tel_ctc_id_ce = :tel_ctc_id_ce",
                             ["ctc_id" => $ctc_id,
                             "ctc_prenom" => $ctc_prenom,
                             "ctc_nom" => $ctc_nom,
                             "tel_numero" => $tel_numero,
                             "tel_type" => $tel_type,
-                            "tel_poste" => $tel_poste
+                            "tel_poste" => $tel_poste,
+                            "tel_ctc_id_ce" => $tel_ctc_id_ce
                             ]);
     }
 
