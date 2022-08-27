@@ -1,30 +1,4 @@
-html {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Raleway', sans-serif;
-    background-image: url("../img/hands.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-h1 {
-    font-size: 40px;
-   /*  background-color: rgba(231, 224, 141, 0.502); */
-}
-
-h2 {
-    margin: 0;
-    text-align: center;
-}
-
-.entete {
-    text-align: center;
-}
-
+/* Styles de la page de connexion et d'inscription */
 .fenetre__connexion {
     background-color: rgb(188, 196, 206, 0.72);
     padding: 20px;
@@ -33,14 +7,13 @@ h2 {
     margin-right: auto;
     width: 40vw;
     border-radius: 5px;
-    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); */
 }
 
-.formulaire__champs {
+.fenetre__connexion-formulaire {
     text-align: center;
 }
 
-.champs__connexion {
+.fenetre__connexion-formulaire_champs {
     width: 30vw;
     height: 30px;
     padding: 0;
@@ -51,7 +24,7 @@ h2 {
     padding-left: 5px;
 }
 
-.bouton__formulaire-connexion {
+.fenetre__connexion-formulaire_submit {
     width: 30vw;
     height: 30px;
     border-radius: 0;
@@ -62,21 +35,23 @@ h2 {
     padding: 0;
 }
 
-.bouton__formulaire-connexion:hover {
+.fenetre__connexion-formulaire_submit:hover {
     background-color: rgb(48, 114, 172);
     color: white;
     transition: .1s;
 }
 
-.options__connexion {
+.fenetre__connexion-options {
     margin-top: 20px;
     text-align: center;
 }
 
-.msg-erreur {
+.fenetre__connexion-msg_erreur {
     text-align: center;
     font-weight: bold;
     margin-top: 10px;
     color: rgb(112, 14, 14);
+    background-color: rgba(174, 207, 236, 0.784);
+    border-radius: 5px;
 }
 

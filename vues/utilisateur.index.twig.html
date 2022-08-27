@@ -1,25 +1,23 @@
 {% extends "base.twig.html" %}
 {% block main %}
-    <div class="fenetre__connexion">
+    <main class="fenetre__connexion">
         <h2>Connexion</h2>
-        <form class="formulaire__champs" action="utilisateur/connexion" method="POST">
-            <div class="unChamp">
-                <!-- <label for="courriel">Adresse email</label> -->
-                <input class="champs__connexion" type="text" name="uti_courriel" id="uti_courriel" placeholder="Adresse email" required>
+        <form class="fenetre__connexion-formulaire" action="utilisateur/connexion" method="POST">
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="text" name="uti_courriel" id="uti_courriel" placeholder="Adresse email" required>
             </div>
-            <div class="unChamp">
-                <!-- <label for="mdp">Mot de passe</label> -->
-                <input class="champs__connexion" type="password" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe" required>
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="password" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe" required>
             </div>
             
-            <button type="submit" class="bouton__formulaire-connexion">Se connecter</button>
+            <button type="submit" class="fenetre__connexion-formulaire_submit">Se connecter</button>
         </form>
-        <div class="options__connexion">
+        <div class="fenetre__connexion-options">
             <a href="utilisateur/nouveau">S'inscrire</a>
             <a href="#">Mot de passe oublié?</a>
         </div>
         {% if erreur != '' %}
-            <div class="msg-erreur">{{erreur}}</div>
+            <div class="fenetre__connexion-msg_erreur">{{erreur}}</div>
         {% endif %}
-    </div>
+    </main>
 {% endblock %}

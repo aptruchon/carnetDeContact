@@ -1,29 +1,25 @@
 {% extends "base.twig.html" %}
 {% block main %}
-    <div class="fenetre__connexion">
+    <main class="fenetre__connexion">
         <h2>Connexion</h2>
-        <form class="formulaire__champs" action="utilisateur/ajout" method="POST">
-            <div class="unChamp">
-
-                <input class="champs__connexion" type="text" name="uti_nom" id="uti_nom" placeholder="Nom complet" required>
+        <form class="fenetre__connexion-formulaire" action="utilisateur/ajout" method="POST">
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="text" name="uti_nom" id="uti_nom" placeholder="Nom complet" required>
             </div>
-            <div class="unChamp">
-
-                <input class="champs__connexion" type="text" name="uti_courriel" id="uti_courriel" placeholder="Adresse email" required>
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="text" name="uti_courriel" id="uti_courriel" placeholder="Adresse email" required>
             </div>
-            <div class="unChamp">
-
-                <input class="champs__connexion" type="password" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe" required>
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="password" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe" required>
             </div>
-            <div class="unChamp">
-
-                <input class="champs__connexion" type="password" name="uti_mdp2" id="uti_mdp2" placeholder="Confirmation du mot de passe" required>
+            <div>
+                <input class="fenetre__connexion-formulaire_champs" type="password" name="uti_mdp2" id="uti_mdp2" placeholder="Confirmation du mot de passe" required>
             </div>
 
-            <button type="submit" class="bouton__formulaire-connexion">S'inscrire</button>
+            <button type="submit" class="fenetre__connexion-formulaire_submit">S'inscrire</button>
         </form>
-        <div class="options__connexion">
+        <div class="fenetre__connexion-options">
             <a href="utilisateur/index">Connexion</a>
         </div>
-    </div>
+    </main>
 {% endblock %}

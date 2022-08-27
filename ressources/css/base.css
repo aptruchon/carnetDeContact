@@ -1,0 +1,28 @@
+/* Style de base de l'application */
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-image: url("../img/hands.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1 {
+    font-size: 40px;
+   /*  background-color: rgba(231, 224, 141, 0.502); */
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.entete {
+    text-align: center;
+}
+

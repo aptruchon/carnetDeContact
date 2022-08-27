@@ -4,7 +4,9 @@
     <base href="{{ constant('BASE_SERVEUR') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="ressources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="ressources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="ressources/css/connexion.css">
+    <link rel="stylesheet" type="text/css" href="ressources/css/contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
@@ -13,12 +15,14 @@
 <body>
     <header>
         <div class="entete">
+            {% if session.utilisateur %}
+                <a class="deconnexion" href="utilisateur/deconnexion">Se déconnecter</a>
+            {% endif %}
             <h1>Nestor</h1>
             {% if session.utilisateur %}
-            <!-- <div class="profile">
-                <span class="courriel-connexion">{{session.utilisateur.uti_courriel}}</span>
-                (<a href="utilisateur/deconnexion">déconnexion</a>)
-            </div> -->
+            <div class="profile">
+                <span class="courriel-connexion">Bienvenue {{session.utilisateur.uti_courriel}}</span>
+            </div>
             {% endif %}
         </div>
     </header>

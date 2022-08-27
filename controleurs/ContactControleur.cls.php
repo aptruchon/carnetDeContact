@@ -22,11 +22,27 @@ class ContactControleur extends Controleur
     public function tout($params)
     {
         $this->gabarit->affecter('contacts', $this->modele->tout());
+       /*  // Nous avons aussi besoin des catégories...
+        $this->gabarit->affecter("types", $this->modele->toutesCategories()); */
     }
 
     public function ajout($params)
     {
         $this->modele->ajout($_POST);
-        Utilitaire::nouvelleRoute("utilisateur/index");
+        Utilitaire::nouvelleRoute("contact/tout");
     }
+
+    public function modification($params)
+    {
+        $this->modele->modification($_POST);
+        Utilitaire::nouvelleRoute("contact/tout");
+    }
+
+    public function suppression($params)
+    {
+        $this->modele->suppression($_POST);
+        Utilitaire::nouvelleRoute("contact/tout");
+    }
+
+
 }

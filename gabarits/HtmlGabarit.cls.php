@@ -15,7 +15,10 @@ class HtmlGabarit
         $this->action = $action;
 
         $this->twig = new Environment(new FilesystemLoader(['vues/']), []);
+        // Pour avoir accès à SESSION, POST et GET avec twig
         $this->twig->addGlobal('session', $_SESSION);
+        $this->twig->addGlobal('_post', $_POST);
+        $this->twig->addGlobal('_get', $_GET);
     }
 
     public function affecter($nom, $valeur)

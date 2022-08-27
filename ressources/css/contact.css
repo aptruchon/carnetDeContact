@@ -1,0 +1,54 @@
+/* Style de la page contact/tout */
+.fenetre__contacts {
+    background-color: rgb(188, 196, 206, 0.72);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    border-radius: 5px;
+}
+
+.fenetre__contacts-liste_contacts {
+    list-style: none;
+    padding: 0;
+}
+
+.fenetre__contacts-liste_item {
+    background-color: aliceblue;
+    border-top: 0.5px solid rgba(187, 199, 213, 0.72);
+    padding: 10px;
+    font-size: 20px;
+    
+}
+
+.fenetre__contacts-icones_container {
+    text-align: right;
+}
+
+.fenetre__contacts-infos_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fenetre__contacts-infos_contact {
+    margin-right: 45px;
+    font-size: 15px;
+}
+
+.fenetre__contacts-tel_type {
+    font-weight: bold;
+}
+
+.profile {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.deconnexion{
+    display: block;
+    text-align: right;
+    width: 100%;
+}
