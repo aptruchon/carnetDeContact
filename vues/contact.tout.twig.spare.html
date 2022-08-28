@@ -45,34 +45,29 @@
         {% endif %}
         <section>
             <ul class="fenetre__contacts-liste_contacts">
-                {% for contact, infos in contacts %}
-                <li class="fenetre__contacts-liste_item">
+            {% for contact in contacts %}
+            
+                
+                    <li class="fenetre__contacts-liste_item">
                     <div class="fenetre__contacts-icones_container">
-                        <a href="contact/tout/?idModification={{infos.0.ctc_id}}&telCtcIdCe={{infos.0.tel_ctc_id_ce}}
-                                                                &prenom={{infos.0.ctc_prenom}}&nom={{infos.0.ctc_nom}}&telType={{infos.0.tel_type}}
-                                                                &telNumero={{infos.0.tel_numero}}
-                                                                {% if infos.0.tel_poste %}&telPoste={{infos.0.tel_poste}}{% endif %}
-                                                                {% if infos|length > 1 %}  {% endif %}">
-                            <img src="https://s2.svgbox.net/hero-solid.svg?ic=pencil&color=000000" width="18" height="18">
-                        </a>
-                        <a href="contact/suppression?idSuppression={{infos.0.ctc_id}}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=x&color=000000" width="18" height="18"></a>
+                        <a href="contact/tout/?idModification={{contact.ctc_id}}&telCtcIdCe={{contact.tel_ctc_id_ce}}&prenom={{contact.ctc_prenom}}&nom={{contact.ctc_nom}}&telType={{contact.tel_type}}&telNumero={{contact.tel_numero}}{% if contact.tel_poste %}&telPoste={{contact.tel_poste}}{% endif %}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=pencil&color=000000" width="18" height="18"></a>
+                        <a href="contact/suppression?idSuppression={{contact.ctc_id}}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=x&color=000000" width="18" height="18"></a>
                     </div>
                     <div class="fenetre__contacts-infos_container">
                         <div class="fenetre__contacts-nom_contact">
-                            <span class="fenetre__contacts-nom">{{contact}}</span>
+                            <span class="fenetre__contacts-nom">{{contact.ctc_prenom}} {{contact.ctc_nom}}</span>
                         </div>  
                         <div class="fenetre__contacts-infos_contact">
-                            {% for cle in infos %}
-                            <div>
-                                <span class="fenetre__contacts-tel_type">{{cle.tel_type}} : </span>
-                                <span class="fenetre__contacts-tel_numero">{{cle.tel_numero}}</span>
-                                {% if cle.tel_poste %} <span class="fenetre__contacts-tel_poste">Poste: {{cle.tel_poste}}</span> {% endif %} 
-                            </div>
-                            {% endfor %}
+                            <span class="fenetre__contacts-tel_type">{{contact.tel_type}} : </span>
+                            <span class="fenetre__contacts-tel_numero">{{contact.tel_numero}}</span>
+                            {% if contact.tel_poste %} <span class="fenetre__contacts-tel_poste">Poste: {{contact.tel_poste}}</span> {% endif %} 
                         </div> 
                     </div>
                 </li>
-                {% endfor %}
+                
+                
+                
+            {% endfor %}
             </ul>
         </section>
     </main>

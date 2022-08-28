@@ -21,9 +21,6 @@ class ContactControleur extends Controleur
 
     public function tout($params)
     {
-        /* if(!isset($_SESSION["utilisateur"])){
-            Utilitaire::nouvelleRoute("utilisateur/index");
-        } */
         $this->gabarit->affecter('contacts', $this->modele->tout());
     }
 

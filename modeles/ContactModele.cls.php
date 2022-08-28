@@ -7,7 +7,20 @@ class ContactModele extends AccesBd
     public function tout()
     {
         $idUtilisateur = $_SESSION["utilisateur"]->uti_id;
-        return $this->lireTout("SELECT contact.*, telephone.* FROM contact JOIN telephone ON tel_ctc_id_ce = ctc_id WHERE ctc_uti_id_ce = $idUtilisateur ORDER BY ctc_prenom");
+        $contacts = $this->lireTout("SELECT * FROM contact WHERE ctc_uti_id_ce = $idUtilisateur");
+        /* var_dump($contacts); */
+        foreach($contacts as $contact){
+            $ctc_id = $contact->ctc_id;
+            $nomComplet = $contact->ctc_prenom. " " .$contact->ctc_nom;
+            $telephones = [];
+            $telephone[$nomComplet] = $this->lireTout("SELECT telephone.*, ctc_id, ctc_prenom, ctc_nom from telephone JOIN contact ON ctc_id = tel_ctc_id_ce WHERE tel_ctc_id_ce = $ctc_id");
+            array_push($telephones, $telephone);
+        }
+        $tabTelParContact = $telephones[0];
+
+        var_dump($tabTelParContact);
+        return $tabTelParContact;
+        // return $this->lireTout("SELECT contact.*, telephone.* FROM contact JOIN telephone ON tel_ctc_id_ce = ctc_id WHERE ctc_uti_id_ce = $idUtilisateur ORDER BY tel_ctc_id_ce");
     }
 
     public function ajout($contact)
