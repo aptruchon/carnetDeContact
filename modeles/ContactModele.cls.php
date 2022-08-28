@@ -10,17 +10,22 @@ class ContactModele extends AccesBd
         return $this->lireTout("SELECT contact.*, telephone.* FROM contact JOIN telephone ON tel_ctc_id_ce = ctc_id WHERE ctc_uti_id_ce = $idUtilisateur ORDER BY ctc_prenom");
     }
 
-    public function ajouter($contact)
+    public function ajout($contact)
     {
         extract($contact);
-        $this->creer(
-            "INSERT INTO plat VALUES (0, :pla_nom, :pla_detail, :pla_portion, :pla_prix, :pla_cat_id_ce)",
-                ["pla_nom" => $pla_nom,
-                 "pla_detail" => $pla_detail,
-                 "pla_portion" => $pla_portion,
-                 "pla_prix" => $pla_prix,
-                 "pla_cat_id_ce" => $pla_cat_id_ce
-                ]);
+        $idUtilisateur = $_SESSION["utilisateur"]->uti_id;
+        $lastInsertId = $this->creer("INSERT INTO contact (ctc_prenom, ctc_nom, ctc_uti_id_ce) VALUES (:ctc_prenom, :ctc_nom, :ctc_uti_id_ce)",
+                        [   "ctc_prenom" => $ctc_prenom,
+                            "ctc_nom" => $ctc_nom,
+                            "ctc_uti_id_ce" => $idUtilisateur
+                        ]);
+        $this->creer("INSERT INTO telephone (tel_numero, tel_type, tel_poste, tel_ctc_id_ce) VALUES (:tel_numero, :tel_type, :tel_poste, :tel_ctc_id_ce);",
+        [
+            "tel_numero" => $tel_numero,
+            "tel_type" => $tel_type,
+            "tel_poste" => $tel_poste,
+            "tel_ctc_id_ce" => $lastInsertId
+        ]);
     }
     
     public function modification($contact)
@@ -37,20 +42,25 @@ class ContactModele extends AccesBd
                                 ctc_id = :ctc_id
                             AND 
                                 tel_ctc_id_ce = :tel_ctc_id_ce",
-                            ["ctc_id" => $ctc_id,
-                            "ctc_prenom" => $ctc_prenom,
-                            "ctc_nom" => $ctc_nom,
-                            "tel_numero" => $tel_numero,
-                            "tel_type" => $tel_type,
-                            "tel_poste" => $tel_poste,
-                            "tel_ctc_id_ce" => $tel_ctc_id_ce
+                            [   "ctc_id" => $ctc_id,
+                                "ctc_prenom" => $ctc_prenom,
+                                "ctc_nom" => $ctc_nom,
+                                "tel_numero" => $tel_numero,
+                                "tel_type" => $tel_type,
+                                "tel_poste" => $tel_poste,
+                                "tel_ctc_id_ce" => $tel_ctc_id_ce
                             ]);
     }
 
 
     public function suppression($contactId)
     {
-        $this->supprimer("DELETE FROM contact WHERE ctc_id=:ctc_id"
-        , ['ctc_id' => $contactId]);
+        $this->supprimer("  BEGIN;
+                                DELETE FROM telephone WHERE tel_ctc_id_ce = :tel_ctc_id_ce;
+                                DELETE FROM contact WHERE ctc_id=:ctc_id;
+                            COMMIT",
+                            [   'tel_ctc_id_ce' => $contactId,
+                                'ctc_id' => $contactId
+                            ]);
     }
 }

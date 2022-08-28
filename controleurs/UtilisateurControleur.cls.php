@@ -48,6 +48,8 @@ class UtilisateurControleur extends Controleur
         if(!$erreur) {
             // Sauvegarder l'état de connexion
             $_SESSION['utilisateur'] = $utilisateur;
+            var_dump($utilisateur);
+
             // Rediriger vers contact/tout
             Utilitaire::nouvelleRoute('contact/tout');
         }

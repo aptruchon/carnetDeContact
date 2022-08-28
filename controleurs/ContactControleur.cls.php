@@ -5,9 +5,9 @@ class ContactControleur extends Controleur
     function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
-       /*  if(isset($_SESSION['utilisateur'])) {
-            Utilitaire::nouvelleRoute('categorie/tout');
-        } */
+        if(!isset($_SESSION['utilisateur'])) {
+            Utilitaire::nouvelleRoute('utilisateur/index');
+        }
     }
 
     /**
@@ -21,9 +21,10 @@ class ContactControleur extends Controleur
 
     public function tout($params)
     {
+        /* if(!isset($_SESSION["utilisateur"])){
+            Utilitaire::nouvelleRoute("utilisateur/index");
+        } */
         $this->gabarit->affecter('contacts', $this->modele->tout());
-       /*  // Nous avons aussi besoin des catégories...
-        $this->gabarit->affecter("types", $this->modele->toutesCategories()); */
     }
 
     public function ajout($params)
@@ -40,7 +41,7 @@ class ContactControleur extends Controleur
 
     public function suppression($params)
     {
-        $this->modele->suppression($_POST);
+        $this->modele->suppression($_GET["idSuppression"]);
         Utilitaire::nouvelleRoute("contact/tout");
     }
 

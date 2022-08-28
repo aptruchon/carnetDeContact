@@ -13,7 +13,7 @@ class AccesBd
         if(!isset($this->pdo)) {
             $options = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ];
             $this->pdo = new PDO("mysql:host=".BD_HOTE."; dbname=".BD_NOM."; charset=utf8",
-                BD_UTIL, BD_MDP, $options); 
+                BD_UTIL, BD_MDP, $options);
         }
     }
         
@@ -72,6 +72,8 @@ class AccesBd
     protected function creer(string $req, array $params=[]) : int 
     {
         $this->soumettre($req, $params);
+       /*  var_dump($this->pdo->lastInsertId(), $req, $params);
+        die(); */
         return $this->pdo->lastInsertId();
     }
 
