@@ -30,15 +30,31 @@
                 <input type="text" name="tel_ctc_id_ce" id="tel_ctc_id_ce" value="{{_get.telCtcIdCe}}" hidden>
                 <input type="text" name="ctc_prenom" id="ctc_prenom" value="{{_get.prenom}}" placeholder="Prénom">
                 <input type="text" name="ctc_nom" id="ctc_nom" value="{{_get.nom}}" placeholder="Nom">
-                <select name="tel_type" id="tel_type">
-                    <option value="Cellulaire" {{ _get.telType == "Cellulaire" ? "selected" : '' }}>Cellulaire</option>
-                    <option value="Domicile" {{ _get.telType == "Domicile" ? "selected" : '' }}>Domicile</option>
-                    <option value="Bureau" {{ _get.telType == "Bureau" ? "selected" : '' }}>Bureau</option>
-                    <option value="Autre" {{ _get.telType == "Autre" ? "selected" : '' }}>Autre</option>
-                </select>
-                {# <input type="select" name="tel_type" id="tel_type" value="{{_get.telType}}" placeholder="Type"> #}
-                <input type="text" name="tel_numero" id="tel_numero" value="{{_get.telNumero}}" placeholder="Numéro de téléphone">
-                <input type="text" name="tel_poste" id="tel_poste" value="{{_get.telPoste}}" placeholder="Poste">
+                
+                {% for num in range(1, _get.nombreNum) %}
+                    
+                    {% set type = attribute(_get, "telType" ~ num) %}
+                    {% set numero = attribute(_get, "telNumero" ~ num) %}
+                    {% set poste = attribute(_get, "telPoste" ~ num) %}
+                    {% set telId = attribute(_get, "telId" ~ num) %}
+                    {% set nomEtIdType = "telType" ~ num %}
+                    {% set nomEtIdNumero = "telNumero" ~ num %}
+                    {% set nomEtIdPoste = "telPoste" ~ num %}
+                    {% set nomEtIdTel = "telId" ~ num %}
+
+                    <select name="{{nomEtIdType}}" id="{{nomEtIdType}}">
+                        <option value=""></option>
+                        <option value="Cellulaire" {{ type == "Cellulaire" ? "selected" : '' }}>Cellulaire</option>
+                        <option value="Domicile" {{ type == "Domicile" ? "selected" : '' }}>Domicile</option>
+                        <option value="Bureau" {{ type == "Bureau" ? "selected" : '' }}>Bureau</option>
+                        <option value="Autre" {{ type == "Autre" ? "selected" : '' }}>Autre</option>
+                    </select>
+
+                    <input type="text" name="{{nomEtIdNumero}}" id="{{nomEtIdNumero}}" value="{{numero}}" placeholder="Numéro de téléphone">
+                    <input type="text" name="{{nomEtIdPoste}}" id="{{nomEtIdPoste}}" value="{{poste}}" placeholder="Poste">
+                    <input type="text" name="nbEntre" id="nbEntre" value="{{num}}" hidden>
+                    <input type="text" name="{{nomEtIdTel}}" id="{{nomEtIdTel}}" value="{{telId}}" hidden>
+                {% endfor %}
                 <button type="submit">Enregistrer les modifications</button>
             </form>
         </section>
@@ -48,11 +64,7 @@
                 {% for contact, infos in contacts %}
                 <li class="fenetre__contacts-liste_item">
                     <div class="fenetre__contacts-icones_container">
-                        <a href="contact/tout/?idModification={{infos.0.ctc_id}}&telCtcIdCe={{infos.0.tel_ctc_id_ce}}
-                                                                &prenom={{infos.0.ctc_prenom}}&nom={{infos.0.ctc_nom}}&telType={{infos.0.tel_type}}
-                                                                &telNumero={{infos.0.tel_numero}}
-                                                                {% if infos.0.tel_poste %}&telPoste={{infos.0.tel_poste}}{% endif %}
-                                                                {% if infos|length > 1 %}  {% endif %}">
+                        <a href="contact/tout/?idModification={{infos.0.ctc_id}}&telCtcIdCe={{infos.0.tel_ctc_id_ce}}&prenom={{infos.0.ctc_prenom}}&nom={{infos.0.ctc_nom}}{% for cle in infos %}&telId{{loop.index}}={{cle.tel_id}}&telType{{loop.index}}={{cle.tel_type}}&telNumero{{loop.index}}={{cle.tel_numero}}{% if cle.tel_poste %}&telPoste{{loop.index}}={{cle.tel_poste}}{% endif %}&nombreNum={{infos|length}}{% endfor %}">
                             <img src="https://s2.svgbox.net/hero-solid.svg?ic=pencil&color=000000" width="18" height="18">
                         </a>
                         <a href="contact/suppression?idSuppression={{infos.0.ctc_id}}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=x&color=000000" width="18" height="18"></a>

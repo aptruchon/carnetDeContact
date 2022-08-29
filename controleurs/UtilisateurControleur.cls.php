@@ -5,9 +5,9 @@ class UtilisateurControleur extends Controleur
     function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
-       /*  if(isset($_SESSION['utilisateur'])) {
+        if(isset($_SESSION['utilisateur'])) {
             Utilitaire::nouvelleRoute('categorie/tout');
-        } */
+        }
     }
 
     /**
@@ -15,21 +15,24 @@ class UtilisateurControleur extends Controleur
      */
     public function index($params)
     {
-        // Aucun code ici pour le moment....
-
+        // Aucun code ici pour le moment...
     }
 
-    public function nouveau($params)
-    {
-        
-    }
     
+    /**
+     * Méthode qui appelle la méthode ajout de UtilisateurModel en lui envoyant les données de formulaire en POST
+     * et qui redirige vers utilisateur/index (Fenêtre de connexion)
+     */
     public function ajout($params)
     {
         $this->modele->ajout($_POST);
         Utilitaire::nouvelleRoute("utilisateur/index");
     }
 
+
+    /**
+     * Méthode qui vérifie les informations de connexion récupéré en POST et qui traite les erreurs possibles
+     */
     public function connexion()
     {
         $courriel = $_POST['uti_courriel'];
@@ -60,6 +63,10 @@ class UtilisateurControleur extends Controleur
         }
     }
 
+
+    /**
+     * Méthode qui met fin à la session utilisateur
+     */
     public function deconnexion()
     {
         unset($_SESSION['utilisateur']);

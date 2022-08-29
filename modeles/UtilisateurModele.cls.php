@@ -2,17 +2,10 @@
 class UtilisateurModele extends AccesBd
 {
     /**
+     * Méthode qui prépare une requête sql avec les données reçus via $utilisateur (POST), pour l'ajout d'un utilisateur
+     * + hashing du mdp
      * 
-     */
-    public function un($courriel)
-    {
-        return $this->lireUn("SELECT * FROM utilisateur 
-                                WHERE uti_courriel=:email"
-                        , ['email'=>$courriel]);
-    }
-
-    /**
-     * 
+     * @param $utilisateur array
      */
     public function ajout($utilisateur)
     {
