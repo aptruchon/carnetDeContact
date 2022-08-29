@@ -32,18 +32,28 @@ class ContactModele extends AccesBd
     {
         extract($contact);
         $idUtilisateur = $_SESSION["utilisateur"]->uti_id;
+
         $lastInsertId = $this->creer("INSERT INTO contact (ctc_prenom, ctc_nom, ctc_uti_id_ce) VALUES (:ctc_prenom, :ctc_nom, :ctc_uti_id_ce)",
                         [   "ctc_prenom" => $ctc_prenom,
                             "ctc_nom" => $ctc_nom,
                             "ctc_uti_id_ce" => $idUtilisateur
                         ]);
-        $this->creer("INSERT INTO telephone (tel_numero, tel_type, tel_poste, tel_ctc_id_ce) VALUES (:tel_numero, :tel_type, :tel_poste, :tel_ctc_id_ce);",
-        [
-            "tel_numero" => $tel_numero,
-            "tel_type" => $tel_type,
-            "tel_poste" => $tel_poste,
-            "tel_ctc_id_ce" => $lastInsertId
-        ]);
+
+        for ($i=0; $i < $nbEntre; $i++) {
+            // Concaténation du nom et affectation des variables reçus vers les même variables utilisés dans la requête préparé
+            // Celles qu'on reçoit en GET s'appellent telNumero1, telNumero2, ect...
+            $tel_numero = ${"telNumero" . $i + 1};
+            $tel_type = ${"telType" . $i + 1};
+            $tel_poste = ${"telPoste" . $i + 1};
+
+            $this->creer("INSERT INTO telephone (tel_numero, tel_type, tel_poste, tel_ctc_id_ce) VALUES (:tel_numero, :tel_type, :tel_poste, :tel_ctc_id_ce);",
+            [
+                "tel_numero" => $tel_numero,
+                "tel_type" => $tel_type,
+                "tel_poste" => $tel_poste,
+                "tel_ctc_id_ce" => $lastInsertId
+            ]);
+        }
     }
     
 
