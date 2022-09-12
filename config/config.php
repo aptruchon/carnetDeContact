@@ -1,6 +1,6 @@
 <?php
 // URL de base du serveur
-const BASE_SERVEUR = 'http://localhost/PWA/tp2/nestor/';
+const BASE_SERVEUR = 'http://localhost/VESTIGES/session-3/PWA/tp2/nestor/';
 
 //Config de la BD
 const BD_HOTE = "localhost";
